@@ -17,13 +17,4 @@ extension Digest {
             return Data(bytes: digest.final())
         }
     }
-    
-    static func hasherArray(_ algorithm: Algorithm) -> ([UInt8]) -> Data {
-        return { byteArray in
-            let digest = Digest(using: algorithm)
-            _ = digest.update(byteArray: byteArray)
-            return Data(bytes: digest.final())
-        }
-    }
-    
 }

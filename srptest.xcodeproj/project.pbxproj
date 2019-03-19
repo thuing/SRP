@@ -12,8 +12,8 @@
 		65218A2A21E2FBBF006F832B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65218A2921E2FBBF006F832B /* ViewController.swift */; };
 		65218A2F21E2FBC1006F832B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65218A2E21E2FBC1006F832B /* Assets.xcassets */; };
 		65218A3A21E3063E006F832B /* srp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65218A3921E3063E006F832B /* srp.swift */; };
+		65291E9E223B395200F65040 /* bigint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65291E9D223B395200F65040 /* bigint.swift */; };
 		6537392A21E4A18900A63CB7 /* CryptorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6537392921E4A18900A63CB7 /* CryptorExtension.swift */; };
-		654A7C2B2237444800CF7B1D /* BytesArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654A7C2A2237444800CF7B1D /* BytesArray.swift */; };
 		659F5FF7223962F600E150AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 659F5FF6223962F600E150AB /* Main.storyboard */; };
 		659F5FF9223962FB00E150AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 659F5FF8223962FB00E150AB /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -25,8 +25,8 @@
 		65218A2E21E2FBC1006F832B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65218A3321E2FBC1006F832B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65218A3921E3063E006F832B /* srp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = srp.swift; sourceTree = "<group>"; };
+		65291E9D223B395200F65040 /* bigint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bigint.swift; sourceTree = "<group>"; };
 		6537392921E4A18900A63CB7 /* CryptorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptorExtension.swift; sourceTree = "<group>"; };
-		654A7C2A2237444800CF7B1D /* BytesArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BytesArray.swift; sourceTree = "<group>"; };
 		659F5FF6223962F600E150AB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		659F5FF8223962FB00E150AB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68587739AAEDC249598F560D /* Pods-srptest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-srptest.debug.xcconfig"; path = "Target Support Files/Pods-srptest/Pods-srptest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -75,7 +75,7 @@
 				65218A3921E3063E006F832B /* srp.swift */,
 				6537392921E4A18900A63CB7 /* CryptorExtension.swift */,
 				659F5FF8223962FB00E150AB /* LaunchScreen.storyboard */,
-				654A7C2A2237444800CF7B1D /* BytesArray.swift */,
+				65291E9D223B395200F65040 /* bigint.swift */,
 			);
 			path = srptest;
 			sourceTree = "<group>";
@@ -225,10 +225,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65291E9E223B395200F65040 /* bigint.swift in Sources */,
 				65218A2A21E2FBBF006F832B /* ViewController.swift in Sources */,
 				6537392A21E4A18900A63CB7 /* CryptorExtension.swift in Sources */,
 				65218A3A21E3063E006F832B /* srp.swift in Sources */,
-				654A7C2B2237444800CF7B1D /* BytesArray.swift in Sources */,
 				65218A2821E2FBBF006F832B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,6 +14,10 @@ import SwiftyJSON
 
 public class srpClient {
     
+    // 服务器传值 N ，g ，s 盐值
+    let N :BigInt = BigInt("9223372036854775817")
+    let g :BigInt = BigInt("9223372036854775889")
+    let k :BigInt = BigInt("3")
 
     
     func stringToArray(input:String) -> Array<Any> {
@@ -140,8 +144,90 @@ public class srpClient {
         }
     }
     
+    // 大整数转biguint
+    func bigintCData(str:String) -> BigInt {
+        let srp = srpClient()
+        let array  = try! srp.fromb64(var0: str)
+        let data = NSData(bytes: array, length: array.count)
+        let sBigInt = doneInNU(value: BigInt.init(data as Data))
+        return sBigInt
+    }
     
-
+    func doneInNU(value:BigInt) -> BigInt {
+        return value.modulus(BigInt(N))
+    }
+    
+    
+    //M1 = H(H(N) XOR H(g) | H(I) | s | A | B | K)
+    func calculate_M(algorithm: Digest.Algorithm, username: Data, salt: Data, A: Data, B: Data, K: Data) -> BigInt {
+        let H = Digest.hasher(algorithm)
+        let Ndata = H(N.serialize())
+        let gData = H(g.serialize())
+        let HI = H(username)
+        let nxorg = xor(var0: Ndata, var1: gData, var2: 20)
+        let hashM = Digest.hasher(algorithm)
+        return BigInt(hashM(nxorg + HI + salt + A + B + K))
+    }
+    
+    func xor(var0:Data,var1:Data,var2:Int) -> Data {
+        var var3 = [UInt8](repeating: 0, count: var2)
+        let var4 = 0
+        for var4 in var4..<var2{
+            var3[var4] = UInt8(var0[var4] ^ var1[var4])
+        }
+        
+        let data = NSData(bytes: var3, length: var3.count)
+        return data as Data
+    }
+    
+    // 计算x x = hash(salt + p)
+    func calculate_x(algorithm: Digest.Algorithm,salt:Data,password:Data) -> BigInt {
+        let H = Digest.hasher(algorithm)
+        return BigInt(H(salt+password))
+    }
+    
+    // 计算u u = hash(a+b)
+    func calculate_u(algorithm: Digest.Algorithm,A:Data,B:Data) -> BigInt {
+        let H = Digest.hasher(algorithm)
+        return BigInt(H(A+B))
+    }
+    
+    // 计算v v = g^x % n
+    func calculate_v(x: BigInt) -> BigInt {
+        return g.power(x, modulus: N)
+    }
+    
+    /**
+     *   base64编码
+     */
+    func base64Encoding(str:String)->String{
+        let strData = str.data(using: String.Encoding.utf8)
+        let base64String = strData?.base64EncodedString(options: NSData.Base64EncodingOptions.init(rawValue: 0))
+        return base64String ?? ""
+    }
+    
+    /**
+     *   base64解码
+     */
+    func base64Decoding(encodedStr:String)->String{
+        let decodedData = NSData(base64Encoded: encodedStr, options: NSData.Base64DecodingOptions.init(rawValue: 0))
+        let decodedString = NSString(data: decodedData! as Data, encoding: String.Encoding.utf8.rawValue)! as String
+        return decodedString
+    }
     
 }
+
+extension String {
+    //获取子字符串
+    func substingInRange(_ r: Range<Int>) -> String? {
+        if r.lowerBound < 0 || r.upperBound > self.count {
+            return nil
+        }
+        let startIndex = self.index(self.startIndex, offsetBy:r.lowerBound)
+        let endIndex   = self.index(self.startIndex, offsetBy:r.upperBound)
+        return String(self[startIndex..<endIndex])
+    }
+}
+    
+
 
